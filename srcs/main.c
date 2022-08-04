@@ -41,42 +41,44 @@ int	main(void)
 // 	*(unsigned int*)dst = color;
 // }
 
-
-void			param_init(t_param *param)
+void	show_map_info(t_map_info map_info)
 {
-	param->x = 3;
-	param->y = 4;
+	printf("\n===== SHOW MAP INFO =====\n\n");
+	printf("height = %d\n", map_info.height);
+	printf("width = %d\n", map_info.width);
+	printf("c = %d\n", map_info.c);
+	printf("p = %d\n", map_info.p);
+	printf("e = %d\n", map_info.e);
+	printf("\n===== map_line ===== \n%s\n===== map_line =====\n\n", map_info.map_line);
+
+	printf("\n===== map ===== \n");
+	for (int i = 0; map_info.map[i]; i++)
+		printf("%s\n", map_info.map[i]);
+	printf("===== map ===== \n\n");
 }
 
-int				key_press(int keycode, t_param *param)
+int	main(int argc, char *argv[])
 {
-	// static int a = 0;
-
-	if (keycode == KEY_W)
-		param->y++;
-	else if (keycode == KEY_S)
-		param->y--;
-	else if (keycode == KEY_A)
-		param->x--;
-	else if (keycode == KEY_D)
-		param->x++;
-	else if (keycode == KEY_ESC)
-		exit(0);
-	printf("x: %d, y: %d\n", param->x, param->y);
-	return (0);
-}
-
-int			main(void)
-{
+	t_map_info	map_info;
+	t_param		param;
 	void		*mlx;
 	void		*win;
-	t_param		param;
+	int			fd;
+	char		*arr;
 
-	param_init(&param);
-	mlx = mlx_init();
-	win = mlx_new_window(mlx, 500, 500, "mlx_project");
-	mlx_hook(win, X_EVENT_KEY_RELEASE, 0, &key_press, &param);
-	mlx_loop(mlx);
+	check_arg(argc, argv);
+	fd = open(argv[1], O_RDONLY);
+	check_fd(fd);
+	init_map_info(&map_info, fd);
+	show_map_info(map_info);
+
+	system("leaks so_long");
+
+	// param_init(&param);
+	// mlx = mlx_init();
+	// win = mlx_new_window(mlx, 500, 500, "mlx_project");
+	// mlx_hook(win, X_EVENT_KEY_RELEASE, 0, &key_press, &param);
+	// mlx_loop(mlx);
 }
 /*
 0x00FF0000 는 16진법 ARGB(0,255,0,0)를 표현한 것입니다. 

@@ -1,6 +1,7 @@
 NAME = so_long
 CC = cc
-CFLAGS = -Wall -Wextra -Werror -Imlx -c
+# CFLAGS = -Wall -Wextra -Werror -Imlx -c
+CFLAGS = -c
 RM = rm -f
 AR = ar
 CRS = crs
@@ -8,7 +9,17 @@ INC_DIR = includes
 SRCS_DIR = srcs
 
 SRCS = $(addprefix $(SRCS_DIR)/, \
-		main.c)
+		main.c \
+		get_next_line.c \
+		get_next_line_utils.c \
+		error.c \
+		utils.c \
+		init.c \
+		key_press.c \
+		ft_split.c \
+		check.c \
+		check2.c \
+		)
 
 OBJS = $(SRCS:.c=.o)
 
