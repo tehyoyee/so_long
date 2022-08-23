@@ -1,25 +1,36 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   key_press.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: taehykim <taehykim@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/08/23 17:43:41 by taehykim          #+#    #+#             */
+/*   Updated: 2022/08/23 17:43:43 by taehykim         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "so_long.h"
 
-void			param_init(t_param *param)
+int	exit_game(t_map_info *map_info)
 {
-	param->x = 3;
-	param->y = 4;
+	printf("close\n");
+	mlx_destroy_window(map_info->mlx, map_info->win);
+	system("leaks so_long");
+	exit(0);
 }
 
-int				key_press(int keycode, t_param *param)
+int	key_press(int keycode, t_map_info *map_info)
 {
-	// static int a = 0;
-
 	if (keycode == KEY_W)
-		param->y++;
+		move_w(map_info);
 	else if (keycode == KEY_S)
-		param->y--;
+		move_s(map_info);
 	else if (keycode == KEY_A)
-		param->x--;
+		move_a(map_info);
 	else if (keycode == KEY_D)
-		param->x++;
+		move_d(map_info);
 	else if (keycode == KEY_ESC)
-		exit(0);
-	printf("x: %d, y: %d\n", param->x, param->y);
+		exit_game(map_info);
 	return (0);
 }

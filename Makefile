@@ -1,7 +1,6 @@
 NAME = so_long
 CC = cc
-# CFLAGS = -Wall -Wextra -Werror -Imlx -c
-CFLAGS = -c
+CFLAGS = -Wall -Wextra -Werror -Imlx -c
 RM = rm -f
 AR = ar
 CRS = crs
@@ -19,6 +18,8 @@ SRCS = $(addprefix $(SRCS_DIR)/, \
 		ft_split.c \
 		check.c \
 		check2.c \
+		draw_map.c \
+		move.c \
 		)
 
 OBJS = $(SRCS:.c=.o)

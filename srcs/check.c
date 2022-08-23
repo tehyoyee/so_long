@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   check.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: taehykim <taehykim@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/08/23 17:43:22 by taehykim          #+#    #+#             */
+/*   Updated: 2022/08/23 17:43:28 by taehykim         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "so_long.h"
 
 void	check_arg(int argc, char **argv)
@@ -22,8 +34,8 @@ void	check_characters(int c, int p, int e)
 
 void	check_rectangular(char **map)
 {
-	int	i;
-	int	width;
+	size_t	i;
+	size_t	width;
 
 	i = 0;
 	width = ft_strlen(map[i]);
@@ -42,18 +54,18 @@ void	check_surrounded(char **map, int width, int height)
 	i = 0;
 	while (i < width)
 	{
-		if (ft_chrcmp(map[0][i], '1'))
+		if (map[0][i] != '1')
 			exit_error("Map should be surrounded by the wall ; 1\n");
-		if (ft_chrcmp(map[height - 1][i], '1'))
+		if (map[height - 1][i] != '1')
 			exit_error("Map should be surrounded by the wall ; 1\n");
 		i++;
 	}
 	i = 0;
 	while (i < height)
 	{
-		if (ft_chrcmp(map[i][0], '1'))
+		if (map[i][0] != '1')
 			exit_error("Map should be surrounded by the wall ; 1\n");
-		if (ft_chrcmp(map[i][width - 1], '1'))
+		if (map[i][width - 1] != '1')
 			exit_error("Map should be surrounded by the wall ; 1\n");
 		i++;
 	}

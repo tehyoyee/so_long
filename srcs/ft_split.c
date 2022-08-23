@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_split.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: taehykim <taehykim@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/08/23 17:43:34 by taehykim          #+#    #+#             */
+/*   Updated: 2022/08/23 17:43:37 by taehykim         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "so_long.h"
 
 static int	count(char const *s, char c)
@@ -64,7 +76,7 @@ static void	go_split(char **strs, char const *s, char c, int i)
 		if (strs[i] == 0)
 		{
 			ft_free(strs, i);
-			exit_error("malloc error\n", 1);
+			exit_error("malloc error\n");
 		}
 		j = 0;
 		k -= size;
@@ -87,7 +99,7 @@ char	**ft_split(char const *s, char c)
 	size = count(s, c);
 	strs = (char **)malloc(sizeof(char *) * (size + 1));
 	if (!strs)
-		exit_error("malloc error\n", 1);
+		exit_error("malloc error\n");
 	i = 0;
 	go_split(strs, s, c, i);
 	return (strs);
