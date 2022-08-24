@@ -14,8 +14,6 @@
 # define SO_LONG_H
 
 # include <stdio.h>
-# include <stdlib.h>
-# include <unistd.h>
 # include "../mlx/mlx.h"
 # include "get_next_line.h"
 
@@ -35,11 +33,6 @@ typedef struct s_img {
 	void	*wall;
 }			t_img;
 
-typedef struct s_param {
-	int		x;
-	int		y;
-}				t_param;
-
 typedef struct s_map_info {
 	t_img	img;
 	void	*mlx;
@@ -56,18 +49,20 @@ typedef struct s_map_info {
 	char	*map_line;
 }			t_map_info;
 
-int		exit_game(t_map_info *map_info);
+char	*get_next_line(int fd);
+void	init_player_pos(t_map_info *map_info);
+void	init_map_info(t_map_info *map_info, int fd);
+t_img	set_img(void *mlx);
+int		key_press(int keycode, t_map_info *map_info);
+void	draw_map(t_map_info map_info);
+
+// move
+
 void	move_a(t_map_info *map_info);
 void	move_d(t_map_info *map_info);
 void	move_w(t_map_info *map_info);
 void	move_s(t_map_info *map_info);
-t_img	set_img(void *mlx);
-void	init_player_pos(t_map_info *map_info);
-void	init_map_info(t_map_info *map_info, int fd);
-char	*get_next_line(int fd);
-int		key_press(int keycode, t_map_info *map_info);
-void	param_init(t_param *param);
-void	draw_map(t_map_info map_info);
+int		exit_game(t_map_info *map_info);
 
 // utils
 
@@ -79,7 +74,6 @@ char	**ft_split(char const *s, char c);
 
 void	exit_error(char *msg);
 void	check_arg(int argc, char **argv);
-void	check_fd(int fd);
 void	check_characters(int c, int p, int e);
 void	check_rectangular(char **map);
 void	check_surrounded(char **map, int width, int height);

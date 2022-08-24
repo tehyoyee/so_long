@@ -40,3 +40,10 @@ int	ft_strncmp(const char *s1, const char *s2, size_t n)
 	}
 	return (0);
 }
+
+void	exit_error(char *msg)
+{
+	printf("Error\n");
+	printf("%s", msg);
+	exit(1);
+}

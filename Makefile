@@ -11,13 +11,11 @@ SRCS = $(addprefix $(SRCS_DIR)/, \
 		main.c \
 		get_next_line.c \
 		get_next_line_utils.c \
-		error.c \
 		utils.c \
 		init.c \
 		key_press.c \
 		ft_split.c \
 		check.c \
-		check2.c \
 		draw_map.c \
 		move.c \
 		)

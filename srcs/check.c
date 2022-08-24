@@ -20,16 +20,12 @@ void	check_arg(int argc, char **argv)
 		exit_error("Map file should be ended with \".ber\"\n");
 }
 
-void	check_fd(int fd)
-{
-	if (fd < 0)
-		exit_error("Failed to open file\n");
-}
-
 void	check_characters(int c, int p, int e)
 {
 	if (c < 1 || p < 1 || e < 1)
 		exit_error("Map need C, E, P at least 1\n");
+	if (p > 1)
+		exit_error("Player's more than 2\n");
 }
 
 void	check_rectangular(char **map)
@@ -67,6 +63,21 @@ void	check_surrounded(char **map, int width, int height)
 			exit_error("Map should be surrounded by the wall ; 1\n");
 		if (map[i][width - 1] != '1')
 			exit_error("Map should be surrounded by the wall ; 1\n");
+		i++;
+	}
+}
+
+void	check_white_line(char *map_line)
+{
+	int	i;
+
+	i = 0;
+	if (map_line[0] == '\n')
+		exit_error("Map started with a newline\n");
+	while (map_line[i + 1])
+	{
+		if (!ft_strncmp(&map_line[i], "\n\n", 2))
+			exit_error("Map has newline at least 1\n");
 		i++;
 	}
 }

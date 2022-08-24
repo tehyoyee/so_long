@@ -12,6 +12,12 @@
 
 #include "so_long.h"
 
+void	check_fd(int fd)
+{
+	if (fd < 0)
+		exit_error("Failed to open file\n");
+}
+
 int	main(int argc, char *argv[])
 {
 	t_map_info	map_info;
