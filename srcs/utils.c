@@ -12,6 +12,21 @@
 
 #include "so_long.h"
 
+void	ft_free_final(t_map_info *map_info)
+{
+	if (map_info->map)
+	{
+		free(map_info->map);
+		map_info->map = NULL;
+	}
+	if (map_info->map_line)
+	{
+		free(map_info->map);
+		map_info->map_line = NULL;
+	}
+	map_info = NULL;
+}
+
 void	ft_free(char **arr)
 {
 	int		i;

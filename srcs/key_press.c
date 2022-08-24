@@ -16,6 +16,7 @@ int	exit_game(t_map_info *map_info)
 {
 	printf("close\n");
 	mlx_destroy_window(map_info->mlx, map_info->win);
+	ft_free_final(map_info);
 	exit(0);
 }
 

@@ -17,6 +17,7 @@ void	end_game(t_map_info *map_info)
 	printf("steps : %d\n", map_info->steps + 1);
 	printf("Mission Complete !\n");
 	mlx_destroy_window(map_info->mlx, map_info->win);
+	ft_free_final(map_info);
 	exit(0);
 }
 

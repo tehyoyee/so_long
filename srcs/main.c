@@ -35,4 +35,5 @@ int	main(int argc, char *argv[])
 	mlx_hook(map_info.win, KEY_RELEASE, 0, &key_press, &map_info);
 	mlx_hook(map_info.win, KEY_EXIT, 0, &exit_game, &map_info);
 	mlx_loop(map_info.mlx);
+	ft_free_final(&map_info);
 }
