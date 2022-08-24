@@ -14,16 +14,15 @@
 
 void	draw_map_2(t_map_info map_info, int w, int h)
 {
+	mlx_put_image_to_window(map_info.mlx, map_info.win, \
+		map_info.img.empty, 64 * w, 64 * h);
 	if (map_info.map[h][w] == '1')
-		mlx_put_image_to_window(map_info.mlx, map_info.win, \
-			map_info.img.wall, 64 * w, 64 * h);
-	else if (map_info.map[h][w] == '0')
-		mlx_put_image_to_window(map_info.mlx, map_info.win, \
-			map_info.img.empty, 64 * w, 64 * h);
-	else if (map_info.map[h][w] == 'C')
 	{
 		mlx_put_image_to_window(map_info.mlx, map_info.win, \
-			map_info.img.empty, 64 * w, 64 * h);
+			map_info.img.wall, 64 * w, 64 * h);
+	}
+	else if (map_info.map[h][w] == 'C')
+	{
 		mlx_put_image_to_window(map_info.mlx, map_info.win, \
 			map_info.img.item, 64 * w, 64 * h);
 	}			
@@ -32,8 +31,6 @@ void	draw_map_2(t_map_info map_info, int w, int h)
 			map_info.img.exit, 64 * w, 64 * h);
 	else if (map_info.map[h][w] == 'P')
 	{
-		mlx_put_image_to_window(map_info.mlx, map_info.win, \
-			map_info.img.empty, 64 * w, 64 * h);
 		mlx_put_image_to_window(map_info.mlx, map_info.win, \
 			map_info.img.player, 64 * w, 64 * h);
 	}
