@@ -14,10 +14,14 @@
 
 void	ft_free_final(t_map_info *map_info)
 {
-	if (map_info->map)
+	int	i;
+
+	i = 0;
+	while (map_info->map[i])
 	{
-		free(map_info->map);
-		map_info->map = NULL;
+		free(map_info->map[i]);
+		map_info->map[i] = NULL;
+		i++;
 	}
 	if (map_info->map_line)
 	{
